@@ -6,30 +6,35 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4D98720C2E0AA6D000EA413F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9872012E0AA6D000EA413F /* Assets.xcassets */; };
+		4D98720E2E0AA6D000EA413F /* Ishq Hai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D9872032E0AA6D000EA413F /* Ishq Hai.mp3 */; };
+		4D98720F2E0AA6D000EA413F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9872052E0AA6D000EA413F /* LaunchScreen.storyboard */; };
+		4D9872102E0AA6D000EA413F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9872072E0AA6D000EA413F /* Main.storyboard */; };
+		4D9872112E0AA6D000EA413F /* Sajna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D9872082E0AA6D000EA413F /* Sajna.mp3 */; };
+		4D9872122E0AA6D000EA413F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9872002E0AA6D000EA413F /* AppDelegate.swift */; };
+		4D9872132E0AA6D000EA413F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9872092E0AA6D000EA413F /* SceneDelegate.swift */; };
+		4D9872142E0AA6D000EA413F /* SongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D98720A2E0AA6D000EA413F /* SongVC.swift */; };
+		4D9872192E0AA72300EA413F /* ListSongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9872182E0AA72300EA413F /* ListSongVC.swift */; };
+		4D98721F2E0AA79C00EA413F /* ListSongTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D98721E2E0AA79C00EA413F /* ListSongTVC.xib */; };
+		4D9872202E0AA79C00EA413F /* ListSongTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D98721D2E0AA79C00EA413F /* ListSongTVC.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		4D9872002E0AA6D000EA413F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4D9872012E0AA6D000EA413F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4D9872022E0AA6D000EA413F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D9872032E0AA6D000EA413F /* Ishq Hai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ishq Hai.mp3"; sourceTree = "<group>"; };
+		4D9872042E0AA6D000EA413F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4D9872062E0AA6D000EA413F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4D9872082E0AA6D000EA413F /* Sajna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sajna.mp3; sourceTree = "<group>"; };
+		4D9872092E0AA6D000EA413F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4D98720A2E0AA6D000EA413F /* SongVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongVC.swift; sourceTree = "<group>"; };
+		4D9872182E0AA72300EA413F /* ListSongVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSongVC.swift; sourceTree = "<group>"; };
+		4D98721D2E0AA79C00EA413F /* ListSongTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSongTVC.swift; sourceTree = "<group>"; };
+		4D98721E2E0AA79C00EA413F /* ListSongTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListSongTVC.xib; sourceTree = "<group>"; };
 		AFD6C3552D4A481600A74D70 /* AVFoundation_task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVFoundation_task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		AFD6C3672D4A481800A74D70 /* Exceptions for "AVFoundation_task" folder in "AVFoundation_task" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = AFD6C3542D4A481600A74D70 /* AVFoundation_task */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		AFD6C3572D4A481600A74D70 /* AVFoundation_task */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				AFD6C3672D4A481800A74D70 /* Exceptions for "AVFoundation_task" folder in "AVFoundation_task" target */,
-			);
-			path = AVFoundation_task;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AFD6C3522D4A481600A74D70 /* Frameworks */ = {
@@ -42,10 +47,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D98720B2E0AA6D000EA413F /* AVFoundation_task */ = {
+			isa = PBXGroup;
+			children = (
+				4D98721C2E0AA77400EA413F /* View */,
+				4D9872172E0AA6F000EA413F /* Song */,
+				4D9872162E0AA6E100EA413F /* StortBoard */,
+				4D9872152E0AA6D200EA413F /* ViewController */,
+				4D9872002E0AA6D000EA413F /* AppDelegate.swift */,
+				4D9872012E0AA6D000EA413F /* Assets.xcassets */,
+				4D9872022E0AA6D000EA413F /* Info.plist */,
+				4D9872092E0AA6D000EA413F /* SceneDelegate.swift */,
+			);
+			path = AVFoundation_task;
+			sourceTree = "<group>";
+		};
+		4D9872152E0AA6D200EA413F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4D98720A2E0AA6D000EA413F /* SongVC.swift */,
+				4D9872182E0AA72300EA413F /* ListSongVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4D9872162E0AA6E100EA413F /* StortBoard */ = {
+			isa = PBXGroup;
+			children = (
+				4D9872052E0AA6D000EA413F /* LaunchScreen.storyboard */,
+				4D9872072E0AA6D000EA413F /* Main.storyboard */,
+			);
+			path = StortBoard;
+			sourceTree = "<group>";
+		};
+		4D9872172E0AA6F000EA413F /* Song */ = {
+			isa = PBXGroup;
+			children = (
+				4D9872032E0AA6D000EA413F /* Ishq Hai.mp3 */,
+				4D9872082E0AA6D000EA413F /* Sajna.mp3 */,
+			);
+			path = Song;
+			sourceTree = "<group>";
+		};
+		4D98721C2E0AA77400EA413F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4D98721D2E0AA79C00EA413F /* ListSongTVC.swift */,
+				4D98721E2E0AA79C00EA413F /* ListSongTVC.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AFD6C34C2D4A481600A74D70 = {
 			isa = PBXGroup;
 			children = (
-				AFD6C3572D4A481600A74D70 /* AVFoundation_task */,
+				4D98720B2E0AA6D000EA413F /* AVFoundation_task */,
 				AFD6C3562D4A481600A74D70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,9 +128,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				AFD6C3572D4A481600A74D70 /* AVFoundation_task */,
 			);
 			name = AVFoundation_task;
 			packageProductDependencies = (
@@ -122,6 +175,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D98720C2E0AA6D000EA413F /* Assets.xcassets in Resources */,
+				4D98720E2E0AA6D000EA413F /* Ishq Hai.mp3 in Resources */,
+				4D98720F2E0AA6D000EA413F /* LaunchScreen.storyboard in Resources */,
+				4D9872102E0AA6D000EA413F /* Main.storyboard in Resources */,
+				4D98721F2E0AA79C00EA413F /* ListSongTVC.xib in Resources */,
+				4D9872112E0AA6D000EA413F /* Sajna.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +191,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D9872202E0AA79C00EA413F /* ListSongTVC.swift in Sources */,
+				4D9872122E0AA6D000EA413F /* AppDelegate.swift in Sources */,
+				4D9872132E0AA6D000EA413F /* SceneDelegate.swift in Sources */,
+				4D9872142E0AA6D000EA413F /* SongVC.swift in Sources */,
+				4D9872192E0AA72300EA413F /* ListSongVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4D9872052E0AA6D000EA413F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D9872042E0AA6D000EA413F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4D9872072E0AA6D000EA413F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D9872062E0AA6D000EA413F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AFD6C3692D4A481800A74D70 /* Debug */ = {
@@ -145,6 +228,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BHNZXW67R6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AVFoundation_task/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -172,6 +256,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BHNZXW67R6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AVFoundation_task/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
