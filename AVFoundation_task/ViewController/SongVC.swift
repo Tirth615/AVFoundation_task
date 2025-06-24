@@ -7,19 +7,20 @@
 
 import UIKit
 import AVFoundation
+import AVKit
 
 class SongVC: UIViewController {
     
     //MARK: - IBOutlet
     @IBOutlet weak var lbl_time: UILabel!
-    @IBOutlet weak var my_Stepper: UIStepper!
     @IBOutlet weak var lbl_end_music: UILabel!
     @IBOutlet weak var my_Slider: UISlider!
     @IBOutlet weak var lblSongName: UILabel!
     @IBOutlet weak var imageSong: UIImageView!
-    
     @IBOutlet weak var btnplaypause: UIButton!
     
+    @IBOutlet weak var videoview: UIView!
+    @IBOutlet weak var songandvideosemented: UISegmentedControl!
     //MARK: - Variable
     var audio_player = AVAudioPlayer()
     var songname = ""
@@ -88,8 +89,32 @@ class SongVC: UIViewController {
             lbl_time.text = "\(lbl_song)"
         }
     }
+    var player: AVPlayer?
+    var playerLayer: AVPlayerLayer?
+
+    func video() {
+        guard let path = Bundle.main.path(forResource: "5sec", ofType:"mp4") else {
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+        player = AVPlayer(url: url)
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer?.frame = videoview.bounds
+        playerLayer?.videoGravity = .resizeAspect
+        if let layer = playerLayer {
+            videoview.layer.addSublayer(layer)
+        }
+        player?.play()
+    }
     
     //MARK: - Action
+    
+    @IBAction func songvideosegment(_ sender: Any) {
+        if songandvideosemented.selectedSegmentIndex == 1 {
+            video()
+        }
+    }
+    
     
     @IBAction func my_Slider_Action(_ sender: Any) {
         
@@ -127,10 +152,6 @@ class SongVC: UIViewController {
         print(repeatsong)
     }
     
-    @IBAction func btn_backward(_ sender: Any) {
-        audio_player.currentTime = max(audio_player.currentTime + 10.0 , 0.0)
-        my_time += 10
-    }
     @IBAction func btnBack(_ sender: Any) {
         audio_player.pause()
         self.navigationController?.popViewController(animated: true)

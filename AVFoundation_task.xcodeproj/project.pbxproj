@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D05F5832E0AC44700783616 /* 5sec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D05F5822E0AC44600783616 /* 5sec.mp3 */; };
+		4D05F5852E0AD41D00783616 /* 5sec.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4D05F5842E0AD41D00783616 /* 5sec.mp4 */; };
 		4D98720C2E0AA6D000EA413F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9872012E0AA6D000EA413F /* Assets.xcassets */; };
 		4D98720E2E0AA6D000EA413F /* Ishq Hai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D9872032E0AA6D000EA413F /* Ishq Hai.mp3 */; };
 		4D98720F2E0AA6D000EA413F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9872052E0AA6D000EA413F /* LaunchScreen.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		4D05F5822E0AC44600783616 /* 5sec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 5sec.mp3; sourceTree = "<group>"; };
+		4D05F5842E0AD41D00783616 /* 5sec.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5sec.mp4; sourceTree = "<group>"; };
 		4D9872002E0AA6D000EA413F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D9872012E0AA6D000EA413F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D9872022E0AA6D000EA413F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				4D9872032E0AA6D000EA413F /* Ishq Hai.mp3 */,
 				4D9872082E0AA6D000EA413F /* Sajna.mp3 */,
 				4D05F5822E0AC44600783616 /* 5sec.mp3 */,
+				4D05F5842E0AD41D00783616 /* 5sec.mp4 */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D05F5852E0AD41D00783616 /* 5sec.mp4 in Resources */,
 				4D98720C2E0AA6D000EA413F /* Assets.xcassets in Resources */,
 				4D98720E2E0AA6D000EA413F /* Ishq Hai.mp3 in Resources */,
 				4D05F5832E0AC44700783616 /* 5sec.mp3 in Resources */,
