@@ -18,9 +18,9 @@ class SongVC: UIViewController {
     @IBOutlet weak var lblSongName: UILabel!
     @IBOutlet weak var imageSong: UIImageView!
     @IBOutlet weak var btnplaypause: UIButton!
-    
     @IBOutlet weak var videoview: UIView!
     @IBOutlet weak var songandvideosemented: UISegmentedControl!
+    
     //MARK: - Variable
     var audio_player = AVAudioPlayer()
     var songname = ""
@@ -31,6 +31,8 @@ class SongVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "dd"
+        playerLayer?.frame = videoview.bounds
+        
         lblSongName.text = songname
         imageSong.image = UIImage(named: songname)
         btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
@@ -91,27 +93,48 @@ class SongVC: UIViewController {
     }
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
-
+    
     func video() {
-        guard let path = Bundle.main.path(forResource: "5sec", ofType:"mp4") else {
+        // Clean up previous layer if needed
+        playerLayer?.removeFromSuperlayer()
+        player = nil
+        
+        // Load video from bundle
+        guard let path = Bundle.main.path(forResource: "5sec", ofType: "mp4") else {
+            print("Video not found")
             return
         }
         let url = URL(fileURLWithPath: path)
+        
+        // Create player and layer
         player = AVPlayer(url: url)
         playerLayer = AVPlayerLayer(player: player)
         playerLayer?.frame = videoview.bounds
         playerLayer?.videoGravity = .resizeAspect
+        
         if let layer = playerLayer {
             videoview.layer.addSublayer(layer)
         }
+        
         player?.play()
+        playpause = false
+        btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
     
     //MARK: - Action
     
     @IBAction func songvideosegment(_ sender: Any) {
         if songandvideosemented.selectedSegmentIndex == 1 {
+            imageSong.isHidden = true
+            audio_player.pause()
             video()
+        } else {
+            imageSong.isHidden = false
+            player?.pause()
+            playerLayer?.removeFromSuperlayer()
+            audio_player.play()
+            btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            playpause = false
         }
     }
     
@@ -128,22 +151,51 @@ class SongVC: UIViewController {
     }
     
     @IBAction func btnBackward(_ sender: Any) {
-        audio_player.currentTime = max(audio_player.currentTime - 10.0 , 0.0)
-        my_time -= 10
+        if songandvideosemented.selectedSegmentIndex == 0 {
+            let newTime = max(audio_player.currentTime - 10.0, 0.0)
+            audio_player.currentTime = newTime
+            my_time = Int(newTime)
+        } else {
+            guard let currentTime = player?.currentTime() else { return }
+            let seconds = CMTimeGetSeconds(currentTime) - 10
+            let time = CMTime(seconds: max(seconds, 0), preferredTimescale: 600)
+            player?.seek(to: time)
+        }
     }
     
     @IBAction func btnForward(_ sender: Any) {
-        audio_player.currentTime = max(audio_player.currentTime + 10.0 , 0.0)
-        my_time += 10
+        if songandvideosemented.selectedSegmentIndex == 0 {
+            let newTime = min(audio_player.currentTime + 10.0, audio_player.duration)
+            audio_player.currentTime = newTime
+            my_time = Int(newTime)
+        } else {
+            guard let duration = player?.currentItem?.duration,
+                  let currentTime = player?.currentTime() else { return }
+            
+            let maxDuration = CMTimeGetSeconds(duration)
+            let seconds = CMTimeGetSeconds(currentTime) + 10
+            let time = CMTime(seconds: min(seconds, maxDuration), preferredTimescale: 600)
+            player?.seek(to: time)
+        }
     }
     @IBAction func btnPlayPause(_ sender: Any) {
         playpause.toggle()
-        if playpause == true {
-            audio_player.pause()
-            btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        }else {
-            audio_player.play()
-            btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        if songandvideosemented.selectedSegmentIndex == 0 {
+            if playpause {
+                audio_player.pause()
+                btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            } else {
+                audio_player.play()
+                btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            }
+        } else {
+            if playpause {
+                player?.pause()
+                btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            } else {
+                player?.play()
+                btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            }
         }
     }
     
@@ -162,7 +214,6 @@ class SongVC: UIViewController {
         self.present(ListSongVC, animated: true)
     }
 }
-
 
 extension SongVC : AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
