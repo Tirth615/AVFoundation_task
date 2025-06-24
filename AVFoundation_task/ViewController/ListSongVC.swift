@@ -14,7 +14,8 @@ class ListSongVC: UIViewController {
     
     var songList : [String] = [
         "Ishq Hai",
-        "Sajna"
+        "Sajna",
+        "5sec"
     ]
     
     override func viewDidLoad() {

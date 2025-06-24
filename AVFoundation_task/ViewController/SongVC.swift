@@ -16,21 +16,30 @@ class SongVC: UIViewController {
     @IBOutlet weak var lbl_end_music: UILabel!
     @IBOutlet weak var my_Slider: UISlider!
     @IBOutlet weak var lblSongName: UILabel!
+    @IBOutlet weak var imageSong: UIImageView!
+    
+    @IBOutlet weak var btnplaypause: UIButton!
     
     //MARK: - Variable
-    var audio_player = AVAudioPlayer() //OBJ Of AVAudioPlayer
+    var audio_player = AVAudioPlayer()
     var songname = ""
+    var playpause = false
+    var repeatsong = false
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "dd"
         lblSongName.text = songname
+        imageSong.image = UIImage(named: songname)
+        btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        
         do {
             //Path Music File
             let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: songname, ofType: "mp3")!)
             
             audio_player = try AVAudioPlayer.init(contentsOf: url)
+            self.audio_player.delegate = self
             audio_player.prepareToPlay()
             audio_player.play()
             
@@ -71,7 +80,6 @@ class SongVC: UIViewController {
                 lbl_time.text = "\(lbl_song)"
             }else{
                 lbl_time.text = "00:00"
-                
             }
         }else{
             let music_min = my_time / 60
@@ -104,20 +112,51 @@ class SongVC: UIViewController {
         my_time += 10
     }
     @IBAction func btnPlayPause(_ sender: Any) {
-//        audio_player.play()
-        audio_player.pause()
+        playpause.toggle()
+        if playpause == true {
+            audio_player.pause()
+            btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }else {
+            audio_player.play()
+            btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        }
     }
     
     @IBAction func btnRepeat(_ sender: Any) {
+        repeatsong.toggle()
+        print(repeatsong)
     }
     
     @IBAction func btn_backward(_ sender: Any) {
         audio_player.currentTime = max(audio_player.currentTime + 10.0 , 0.0)
         my_time += 10
-        
+    }
+    @IBAction func btnBack(_ sender: Any) {
+        audio_player.pause()
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    @IBAction func btnUpNext(_ sender: Any) {
+        guard let  ListSongVC = self.storyboard?.instantiateViewController(withIdentifier: "ListSongVC") as? ListSongVC else{return}
+        self.present(ListSongVC, animated: true)
+    }
+}
+
+
+extension SongVC : AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if repeatsong {
+            player.currentTime = 0
+            lbl_time.text = "00:00"
+            my_Slider.value = 0
+            my_time = 0
+            player.play()
+        } else {
+            print("complete")
+            lbl_time.text = "00:00"
+            my_Slider.value = 0
+            my_time = 0
+            btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }
     }
 }

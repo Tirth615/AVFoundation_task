@@ -56,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YwM-QJ-M5q">
-                                <rect key="frame" x="10" y="520" width="373" height="30"/>
+                                <rect key="frame" x="10" y="596" width="373" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmq-6Q-3Ed">
                                         <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="30"/>
@@ -94,13 +94,13 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pexels-pixabay-269583" translatesAutoresizingMaskIntoConstraints="NO" id="KMA-l8-FhO">
-                                <rect key="frame" x="20" y="175.66666666666663" width="353" height="294"/>
+                                <rect key="frame" x="20" y="175.66666666666663" width="353" height="350"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="294" id="x5K-U8-qr3"/>
+                                    <constraint firstAttribute="height" constant="350" id="x5K-U8-qr3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgs-7r-4v3">
-                                <rect key="frame" x="20.000000000000007" y="479.66666666666669" width="88.666666666666686" height="20.333333333333314"/>
+                                <rect key="frame" x="20.000000000000007" y="555.66666666666663" width="88.666666666666686" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -113,7 +113,7 @@
                                 </segments>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g6y-W3-3nE">
-                                <rect key="frame" x="20" y="560" width="353" height="34.333333333333371"/>
+                                <rect key="frame" x="20" y="651" width="353" height="34.333333333333371"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcT-Ni-22e">
                                         <rect key="frame" x="0.0" y="0.0" width="70.666666666666671" height="34.333333333333336"/>
@@ -134,7 +134,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a17-yj-BnM">
                                         <rect key="frame" x="141.33333333333334" y="0.0" width="70.333333333333343" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
                                             <action selector="btnPlayPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="neq-8a-Qhu"/>
                                         </connections>
@@ -157,6 +157,19 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwP-KD-Rqk">
+                                <rect key="frame" x="20" y="749.66666666666663" width="86" height="34.333333333333371"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFW-Aa-tA8">
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Up Next"/>
+                                        <connections>
+                                            <action selector="btnUpNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mOU-86-Mjx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -168,18 +181,23 @@
                             <constraint firstAttribute="trailing" secondItem="YwM-QJ-M5q" secondAttribute="trailing" constant="10" id="6ze-dC-jiU"/>
                             <constraint firstItem="YwM-QJ-M5q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="9fi-as-fzl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KMA-l8-FhO" secondAttribute="trailing" constant="20" id="9oq-xc-Ihc"/>
-                            <constraint firstItem="cgs-7r-4v3" firstAttribute="top" secondItem="KMA-l8-FhO" secondAttribute="bottom" constant="10" id="CO8-YQ-N3J"/>
+                            <constraint firstItem="cgs-7r-4v3" firstAttribute="top" secondItem="KMA-l8-FhO" secondAttribute="bottom" constant="30" id="CO8-YQ-N3J"/>
                             <constraint firstItem="SxU-vc-ub4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IA3-j7-17k"/>
                             <constraint firstItem="KMA-l8-FhO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IsH-IC-jDP"/>
                             <constraint firstItem="KMA-l8-FhO" firstAttribute="top" secondItem="SxU-vc-ub4" secondAttribute="bottom" constant="30" id="SY8-5H-Ugr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AwP-KD-Rqk" secondAttribute="trailing" constant="20" id="SxQ-HE-IDr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cgs-7r-4v3" secondAttribute="trailing" constant="20" id="TIe-fX-0cS"/>
                             <constraint firstItem="g6y-W3-3nE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ujw-De-PUQ"/>
                             <constraint firstItem="SxU-vc-ub4" firstAttribute="centerY" secondItem="1Cv-Cc-BxI" secondAttribute="centerY" id="XKE-EQ-mdh"/>
-                            <constraint firstItem="g6y-W3-3nE" firstAttribute="top" secondItem="YwM-QJ-M5q" secondAttribute="bottom" constant="10" id="e8X-mJ-VuY"/>
+                            <constraint firstItem="g6y-W3-3nE" firstAttribute="top" secondItem="YwM-QJ-M5q" secondAttribute="bottom" constant="25" id="e8X-mJ-VuY"/>
+                            <constraint firstItem="AwP-KD-Rqk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sXA-tu-tBz"/>
                             <constraint firstItem="1Cv-Cc-BxI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="saC-VK-4uS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AwP-KD-Rqk" secondAttribute="bottom" id="yqE-wu-KzL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnplaypause" destination="a17-yj-BnM" id="Igw-gu-s1B"/>
+                        <outlet property="imageSong" destination="KMA-l8-FhO" id="3i3-NQ-HmO"/>
                         <outlet property="lblSongName" destination="cgs-7r-4v3" id="IhV-Sg-zQd"/>
                         <outlet property="lbl_end_music" destination="JaY-gZ-ANK" id="1af-YD-jMC"/>
                         <outlet property="lbl_time" destination="dmq-6Q-3Ed" id="kBS-OF-dvj"/>
@@ -214,7 +232,6 @@
         <image name="backward.fill" catalog="system" width="128" height="76"/>
         <image name="forward.fill" catalog="system" width="128" height="76"/>
         <image name="pexels-pixabay-269583" width="5367" height="3578"/>
-        <image name="play.fill" catalog="system" width="120" height="128"/>
         <image name="repeat" catalog="system" width="128" height="98"/>
         <image name="shuffle" catalog="system" width="128" height="95"/>
         <systemColor name="systemBackgroundColor">
