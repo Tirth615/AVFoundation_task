@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: 2be38017d92f8e0d716e58ccc5603730e0155f37
+PODS:
+  - YoutubePlayerView (1.2.2)
+
+DEPENDENCIES:
+  - YoutubePlayerView
+
+SPEC REPOS:
+  trunk:
+    - YoutubePlayerView
+
+SPEC CHECKSUMS:
+  YoutubePlayerView: e3f485006ddaf97d6931a465569501c2be779b68
+
+PODFILE CHECKSUM: c5530bfd13c0d16516ccb00e12c1b5567b27d28b
 
 COCOAPODS: 1.16.2

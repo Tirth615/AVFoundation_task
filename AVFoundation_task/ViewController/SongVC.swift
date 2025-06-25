@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import AVKit
+import YoutubePlayerView
 
 typealias songname = (String) -> ()
 protocol datapassing {
@@ -22,9 +23,12 @@ class SongVC: UIViewController {
     @IBOutlet weak var my_Slider: UISlider!
     @IBOutlet weak var lblSongName: UILabel!
     @IBOutlet weak var imageSong: UIImageView!
+    @IBOutlet weak var backgroundimage: UIImageView!
     @IBOutlet weak var btnplaypause: UIButton!
     @IBOutlet weak var videoview: UIView!
     @IBOutlet weak var songandvideosemented: UISegmentedControl!
+    
+    @IBOutlet weak var youtubevideo: YoutubePlayerView!
     
     //MARK: - Variable
     var audio_player = AVAudioPlayer()
@@ -39,12 +43,14 @@ class SongVC: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "dd"
         playerLayer?.frame = videoview.bounds
-        
+        youtubevideo.delegate = self
         lblSongName.text = songname
         imageSong.image = UIImage(named: songname)
+        backgroundimage.image = UIImage(named: songname)
         btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         
         do {
+
             let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: songname, ofType: "mp3")!)
             audio_player = try AVAudioPlayer.init(contentsOf: url)
             self.audio_player.delegate = self
@@ -87,30 +93,9 @@ class SongVC: UIViewController {
             lbl_time.text = "\(lbl_song)"
         }
     }
+    
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
-    
-    func video() {
-        playerLayer?.removeFromSuperlayer()
-        player = nil
-        guard let path = Bundle.main.path(forResource: "5sec", ofType: "mp4") else {
-            print("Video not found")
-            return
-        }
-        let url = URL(fileURLWithPath: path)
-        player = AVPlayer(url: url)
-        playerLayer = AVPlayerLayer(player: player)
-        playerLayer?.frame = videoview.bounds
-        playerLayer?.videoGravity = .resizeAspect
-        if let layer = playerLayer {
-            videoview.layer.addSublayer(layer)
-        }
-        
-        player?.play()
-        playpause = false
-        btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-    }
-    
     func playpausetoggel() {
         playpause.toggle()
         if songandvideosemented.selectedSegmentIndex == 0 {
@@ -124,9 +109,11 @@ class SongVC: UIViewController {
         } else {
             if playpause {
                 player?.pause()
+                youtubevideo.pause()
                 btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
             } else {
                 player?.play()
+                youtubevideo.play()
                 btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             }
         }
@@ -144,9 +131,12 @@ class SongVC: UIViewController {
         if songandvideosemented.selectedSegmentIndex == 1 {
             imageSong.isHidden = true
             audio_player.pause()
-            video()
+            youtubevideo.isHidden = false
+            youtubevideo.loadWithVideoId("kCP4lVGEMJ8")
+            youtubevideo.play()
         } else {
             imageSong.isHidden = false
+            youtubevideo.isHidden = true
             player?.pause()
             playerLayer?.removeFromSuperlayer()
             audio_player.play()
@@ -194,6 +184,7 @@ class SongVC: UIViewController {
     }
     @IBAction func btnPlayPause(_ sender: Any) {
         playpausetoggel()
+        
     }
     
     @IBAction func btnRepeat(_ sender: Any) {
@@ -229,5 +220,35 @@ extension SongVC : AVAudioPlayerDelegate {
             my_time = 0
             btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
         }
+    }
+}
+
+
+extension SongVC: YoutubePlayerViewDelegate {
+    func playerViewDidBecomeReady(_ playerView: YoutubePlayerView) {
+        print("Ready")
+        playerView.play()
+    }
+
+    func playerView(_ playerView: YoutubePlayerView, didChangedToState state: YoutubePlayerState) {
+        if "\(state)" == "playing" {
+            print("<<<<<<<<<<<<<<<<,")
+            btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        }else {
+            print("?>????????????????")
+            btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }
+    }
+
+    func playerView(_ playerView: YoutubePlayerView, didChangeToQuality quality: YoutubePlaybackQuality) {
+        print("Changed to quality: \(quality)")
+    }
+
+    func playerView(_ playerView: YoutubePlayerView, receivedError error: Error) {
+        print("Error: \(error)")
+    }
+
+    func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
+        my_time = Int(time)
     }
 }
