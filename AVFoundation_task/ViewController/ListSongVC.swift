@@ -8,15 +8,15 @@
 import UIKit
 
 class ListSongVC: UIViewController {
-
     
+    //MARK: - IBOutlet
     @IBOutlet weak var tableSongList: UITableView!
     @IBOutlet weak var lblSong: UILabel!
     @IBOutlet weak var imagesong: UIImageView!
     @IBOutlet weak var viewsong: UIView!
     @IBOutlet weak var btnPlayPause: UIButton!
     
-    
+    //MARK: Variable
     let song :[SongStruct] = [
         SongStruct(title: "Ishq Hai", imagename: "Ishq Hai"),
         SongStruct(title: "Sajna", imagename: "Sajna"),
@@ -24,16 +24,15 @@ class ListSongVC: UIViewController {
     ]
     var songVC: SongVC?
     
-    
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableSongList.delegate = self
         self.tableSongList.dataSource = self
-        
-//        viewsong.isHidden = true
         self.tableSongList.register(UINib(nibName: "ListSongTVC", bundle: nil), forCellReuseIdentifier: "ListSongTVC")
     }
     
+    //MARK: - Button Action
     @IBAction func btnPlayPause(_ sender: Any) {
         songVC?.playpausetoggel()
         if ((songVC?.playpause) != nil) && ((songVC?.playpause)!) {
@@ -42,9 +41,9 @@ class ListSongVC: UIViewController {
             btnPlayPause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         }
     }
-    
 }
 
+//MARK: - Extension For Table View delegate And Datasource
 extension ListSongVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,7 +54,6 @@ extension ListSongVC : UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListSongTVC") as? ListSongTVC else {
             return UITableViewCell()
         }
-        
         let songs = song[indexPath.row]
         cell.lblSongName.text = songs.title
         return cell
@@ -78,11 +76,10 @@ extension ListSongVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
-    }
-    
-    
+    }   
 }
 
+//MARK: - Extension for passing data
 extension ListSongVC : datapassing {
     func datapass(image : String) {
         imagesong.image = UIImage(named: image)
