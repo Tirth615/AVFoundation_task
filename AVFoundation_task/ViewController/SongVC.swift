@@ -9,6 +9,11 @@ import UIKit
 import AVFoundation
 import AVKit
 
+typealias songname = (String) -> ()
+protocol datapassing {
+    func datapass(image : String)
+}
+
 class SongVC: UIViewController {
     
     //MARK: - IBOutlet
@@ -19,6 +24,8 @@ class SongVC: UIViewController {
     @IBOutlet weak var imageSong: UIImageView!
     @IBOutlet weak var btnplaypause: UIButton!
     @IBOutlet weak var videoview: UIView!
+    
+    
     @IBOutlet weak var songandvideosemented: UISegmentedControl!
     
     //MARK: - Variable
@@ -26,6 +33,8 @@ class SongVC: UIViewController {
     var songname = ""
     var playpause = false
     var repeatsong = false
+    var closure:songname!
+    var delegate : datapassing!
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -121,6 +130,33 @@ class SongVC: UIViewController {
         btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
     
+    func playpausetoggel() {
+        playpause.toggle()
+        if songandvideosemented.selectedSegmentIndex == 0 {
+            if playpause {
+                audio_player.pause()
+                btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            } else {
+                audio_player.play()
+                btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            }
+        } else {
+            if playpause {
+                player?.pause()
+                btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            } else {
+                player?.play()
+                btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            }
+        }
+    }
+    
+    func pauseIfPlaying() {
+            if audio_player.isPlaying {
+                audio_player.pause()
+            }
+        }
+    
     //MARK: - Action
     
     @IBAction func songvideosegment(_ sender: Any) {
@@ -179,24 +215,7 @@ class SongVC: UIViewController {
         }
     }
     @IBAction func btnPlayPause(_ sender: Any) {
-        playpause.toggle()
-        if songandvideosemented.selectedSegmentIndex == 0 {
-            if playpause {
-                audio_player.pause()
-                btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            } else {
-                audio_player.play()
-                btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            }
-        } else {
-            if playpause {
-                player?.pause()
-                btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            } else {
-                player?.play()
-                btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            }
-        }
+        playpausetoggel()
     }
     
     @IBAction func btnRepeat(_ sender: Any) {
@@ -205,7 +224,11 @@ class SongVC: UIViewController {
     }
     
     @IBAction func btnBack(_ sender: Any) {
-        audio_player.pause()
+        
+        guard let songname = lblSongName.text else {return}
+        
+        closure(songname)
+        delegate.datapass(image: songname)
         self.navigationController?.popViewController(animated: true)
     }
     

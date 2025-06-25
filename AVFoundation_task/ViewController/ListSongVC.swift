@@ -11,19 +11,36 @@ class ListSongVC: UIViewController {
 
     
     @IBOutlet weak var tableSongList: UITableView!
+    @IBOutlet weak var lblSong: UILabel!
+    @IBOutlet weak var imagesong: UIImageView!
+    @IBOutlet weak var viewsong: UIView!
+    @IBOutlet weak var btnPlayPause: UIButton!
     
-    var songList : [String] = [
-        "Ishq Hai",
-        "Sajna",
-        "5sec"
+    
+    let song :[SongStruct] = [
+        SongStruct(title: "Ishq Hai", imagename: "Ishq Hai"),
+        SongStruct(title: "Sajna", imagename: "Sajna"),
+        SongStruct(title: "5sec", imagename: "5sec")
     ]
+    var songVC: SongVC?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableSongList.delegate = self
         self.tableSongList.dataSource = self
         
+//        viewsong.isHidden = true
         self.tableSongList.register(UINib(nibName: "ListSongTVC", bundle: nil), forCellReuseIdentifier: "ListSongTVC")
+    }
+    
+    @IBAction func btnPlayPause(_ sender: Any) {
+        songVC?.playpausetoggel()
+        if ((songVC?.playpause) != nil) && ((songVC?.playpause)!) {
+            btnPlayPause.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }else{
+            btnPlayPause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        }
     }
     
 }
@@ -31,20 +48,29 @@ class ListSongVC: UIViewController {
 extension ListSongVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songList.count
+        return song.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListSongTVC") as? ListSongTVC else {
             return UITableViewCell()
         }
-        cell.lblSongName.text = songList[indexPath.row]
+        
+        let songs = song[indexPath.row]
+        cell.lblSongName.text = songs.title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let  SongVC = self.storyboard?.instantiateViewController(withIdentifier: "SongVC") as? SongVC else{return}
-        SongVC.songname = self.songList[indexPath.row]
+        songVC?.pauseIfPlaying()
+        self.songVC = SongVC
+        let songs = song[indexPath.row]
+        SongVC.songname = songs.imagename
+        SongVC.closure = { text in
+            self.lblSong.text = text
+        }
+        SongVC.delegate = self
         self.navigationController?.isNavigationBarHidden = true
         SongVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(SongVC, animated: true)
@@ -55,4 +81,10 @@ extension ListSongVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension ListSongVC : datapassing {
+    func datapass(image : String) {
+        imagesong.image = UIImage(named: image)
+    }
 }
