@@ -18,9 +18,10 @@ class ListSongVC: UIViewController {
     
     //MARK: Variable
     let song :[SongStruct] = [
-        SongStruct(title: "Ishq Hai", imagename: "Ishq Hai"),
-        SongStruct(title: "Sajna", imagename: "Sajna"),
-        SongStruct(title: "5sec", imagename: "5sec")
+        SongStruct(title: "Ishq Hai", imagename: "Ishq Hai", videoID: "i48Vh2jgAFs"),
+        SongStruct(title: "Sajna", imagename: "Sajna" , videoID : "kCP4lVGEMJ8"),
+        SongStruct(title: "TuHai", imagename: "TuHai" , videoID : "7E3xekt0QFc"),
+        SongStruct(title: "Sapphire", imagename: "Sapphire" , videoID : "JgDNFQ2RaLQ")
     ]
     var songVC: SongVC?
     
@@ -65,6 +66,7 @@ extension ListSongVC : UITableViewDelegate, UITableViewDataSource {
         self.songVC = SongVC
         let songs = song[indexPath.row]
         SongVC.songname = songs.imagename
+        SongVC.videoID = songs.videoID
         SongVC.closure = { text in
             self.lblSong.text = text
         }

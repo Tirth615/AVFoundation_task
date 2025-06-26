@@ -27,12 +27,12 @@ class SongVC: UIViewController {
     @IBOutlet weak var btnplaypause: UIButton!
     @IBOutlet weak var videoview: UIView!
     @IBOutlet weak var songandvideosemented: UISegmentedControl!
-    
     @IBOutlet weak var youtubevideo: YoutubePlayerView!
     
     //MARK: - Variable
     var audio_player = AVAudioPlayer()
     var songname = ""
+    var videoID = ""
     var playpause = false
     var repeatsong = false
     var closure:songname!
@@ -132,7 +132,7 @@ class SongVC: UIViewController {
             imageSong.isHidden = true
             audio_player.pause()
             youtubevideo.isHidden = false
-            youtubevideo.loadWithVideoId("kCP4lVGEMJ8")
+            youtubevideo.loadWithVideoId(videoID)
             youtubevideo.play()
         } else {
             imageSong.isHidden = false
@@ -178,6 +178,7 @@ class SongVC: UIViewController {
                   let currentTime = player?.currentTime() else { return }
             let maxDuration = CMTimeGetSeconds(duration)
             let seconds = CMTimeGetSeconds(currentTime) + 10
+            youtubevideo.playVideo(at: my_time + 10)
             let time = CMTime(seconds: min(seconds, maxDuration), preferredTimescale: 600)
             player?.seek(to: time)
         }
@@ -241,7 +242,7 @@ extension SongVC: YoutubePlayerViewDelegate {
     }
 
     func playerView(_ playerView: YoutubePlayerView, didChangeToQuality quality: YoutubePlaybackQuality) {
-        print("Changed to quality: \(quality)")
+        print( "Changed to quality: \(quality)")
     }
 
     func playerView(_ playerView: YoutubePlayerView, receivedError error: Error) {
@@ -249,6 +250,7 @@ extension SongVC: YoutubePlayerViewDelegate {
     }
 
     func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
+        print("Time \(time)")
         my_time = Int(time)
     }
 }

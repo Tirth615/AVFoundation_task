@@ -10,4 +10,5 @@ import Foundation
 struct SongStruct {
     let title : String
     let imagename : String
+    let videoID : String
 }
