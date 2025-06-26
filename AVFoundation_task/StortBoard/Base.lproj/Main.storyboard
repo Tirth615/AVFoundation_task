@@ -201,6 +201,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcT-Ni-22e">
                                         <rect key="frame" x="0.0" y="0.0" width="70.666666666666671" height="34.333333333333336"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="shuffle" catalog="system"/>
@@ -313,6 +314,7 @@
                     <connections>
                         <outlet property="backgroundimage" destination="XQz-kk-oxY" id="zcT-Ya-sCS"/>
                         <outlet property="btnplaypause" destination="a17-yj-BnM" id="Igw-gu-s1B"/>
+                        <outlet property="imageHeight" destination="x5K-U8-qr3" id="kET-0i-SLb"/>
                         <outlet property="imageSong" destination="KMA-l8-FhO" id="bRk-lr-Ka4"/>
                         <outlet property="lblSongName" destination="cgs-7r-4v3" id="IhV-Sg-zQd"/>
                         <outlet property="lbl_end_music" destination="JaY-gZ-ANK" id="1af-YD-jMC"/>

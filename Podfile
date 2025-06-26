@@ -6,6 +6,7 @@ target 'AVFoundation_task' do
   use_frameworks!
  
  pod 'YoutubePlayerView'
+ pod 'YoutubePlayer-in-WKWebView', '~> 0.2.0'
 
   # Pods for AVFoundation_task
 

@@ -29,19 +29,23 @@ class SongVC: UIViewController {
     @IBOutlet weak var songandvideosemented: UISegmentedControl!
     @IBOutlet weak var youtubevideo: YoutubePlayerView!
     
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
     //MARK: - Variable
     var audio_player = AVAudioPlayer()
     var songname = ""
     var videoID = ""
     var playpause = false
     var repeatsong = false
-    var closure:songname!
+    var closure : songname!
     var delegate : datapassing!
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "dd"
+        let screenHeight = UIScreen.main.bounds.height
+        print(screenHeight)
+        imageHeight.constant = screenHeight / 2
+        
         playerLayer?.frame = videoview.bounds
         youtubevideo.delegate = self
         lblSongName.text = songname
@@ -50,7 +54,7 @@ class SongVC: UIViewController {
         btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         
         do {
-
+            
             let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: songname, ofType: "mp3")!)
             audio_player = try AVAudioPlayer.init(contentsOf: url)
             self.audio_player.delegate = self
@@ -107,6 +111,7 @@ class SongVC: UIViewController {
                 btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             }
         } else {
+            
             if playpause {
                 player?.pause()
                 youtubevideo.pause()
@@ -185,7 +190,6 @@ class SongVC: UIViewController {
     }
     @IBAction func btnPlayPause(_ sender: Any) {
         playpausetoggel()
-        
     }
     
     @IBAction func btnRepeat(_ sender: Any) {
@@ -224,7 +228,7 @@ extension SongVC : AVAudioPlayerDelegate {
     }
 }
 
-
+//MARK: - Youtube Preview Delegate
 extension SongVC: YoutubePlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YoutubePlayerView) {
         print("Ready")
@@ -240,15 +244,15 @@ extension SongVC: YoutubePlayerViewDelegate {
             btnplaypause.setImage(UIImage(systemName: "play.fill"), for: .normal)
         }
     }
-
+    
     func playerView(_ playerView: YoutubePlayerView, didChangeToQuality quality: YoutubePlaybackQuality) {
         print( "Changed to quality: \(quality)")
     }
-
+    
     func playerView(_ playerView: YoutubePlayerView, receivedError error: Error) {
         print("Error: \(error)")
     }
-
+    
     func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
         print("Time \(time)")
         my_time = Int(time)
