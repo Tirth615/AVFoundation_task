@@ -320,7 +320,7 @@
                         <outlet property="my_Slider" destination="rt4-Fx-foH" id="O9Y-Y8-Vd5"/>
                         <outlet property="songandvideosemented" destination="1Cv-Cc-BxI" id="zT2-0H-T8N"/>
                         <outlet property="videoview" destination="xoK-f7-nPg" id="se0-C3-9T4"/>
-                        <outlet property="youtubevideo" destination="S0K-aZ-Q5c" id="dsi-cZ-FpQ"/>
+                        <outlet property="youtubevideo" destination="S0K-aZ-Q5c" id="Fov-Uu-MVN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

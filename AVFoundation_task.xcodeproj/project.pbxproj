@@ -172,7 +172,7 @@
 				AFD6C3522D4A481600A74D70 /* Frameworks */,
 				AFD6C3532D4A481600A74D70 /* Resources */,
 				4D05F5882E0AE3FB00783616 /* Embed Frameworks */,
-				158F0D1F3125DDFF2EB7D5FB /* [CP] Embed Pods Frameworks */,
+				014BD19025E411641FB60DA6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,7 +236,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		158F0D1F3125DDFF2EB7D5FB /* [CP] Embed Pods Frameworks */ = {
+		014BD19025E411641FB60DA6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -244,13 +244,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AVFoundation_task/Pods-AVFoundation_task-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AVFoundation_task/Pods-AVFoundation_task-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
