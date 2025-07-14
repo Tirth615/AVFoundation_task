@@ -42,19 +42,15 @@ class SongVC: UIViewController {
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         imageHeight.constant = UIScreen.main.bounds.height / 2
         playerLayer?.frame = videoview.bounds
-
         lblSongName.text = songname
         imageSong.image = UIImage(named: songname)
         backgroundimage.image = UIImage(named: songname)
         btnplaypause.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-
         // Setup audio
         AudioManager.shared.setupAudioPlayer(with: songname)
         AudioManager.shared.play()
-
         // Lock screen playback info
         NowPlayingManager.shared.setup(
             songName: songname,
@@ -62,12 +58,10 @@ class SongVC: UIViewController {
             duration: AudioManager.shared.duration()
         )
         NowPlayingManager.shared.setupRemoteCommands()
-
         // Setup slider and duration label
         lbl_end_music.text = formatTime(AudioManager.shared.duration())
         my_Slider.minimumValue = 0
         my_Slider.maximumValue = Float(AudioManager.shared.duration())
-
         // Timer callback
         AudioManager.shared.timerCallback = { [weak self] currentTime in
             guard let self = self else { return }
@@ -84,7 +78,6 @@ class SongVC: UIViewController {
         let seconds = Int(time) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
-
     func playpausetoggel() {
         playpause.toggle()
         if songandvideosemented.selectedSegmentIndex == 0 {
@@ -92,13 +85,11 @@ class SongVC: UIViewController {
             let icon = AudioManager.shared.player?.isPlaying == true ? "pause.fill" : "play.fill"
             btnplaypause.setImage(UIImage(systemName: icon), for: .normal)
         } else {
-            // Video logic placeholder
             btnplaypause.setImage(UIImage(systemName: playpause ? "play.fill" : "pause.fill"), for: .normal)
         }
     }
 
     //MARK: - Actions
-
     @IBAction func songvideosegment(_ sender: Any) {
         if songandvideosemented.selectedSegmentIndex == 1 {
             imageSong.isHidden = true
