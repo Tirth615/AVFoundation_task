@@ -22,6 +22,8 @@
 		4D9872192E0AA72300EA413F /* ListSongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9872182E0AA72300EA413F /* ListSongVC.swift */; };
 		4D98721F2E0AA79C00EA413F /* ListSongTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D98721E2E0AA79C00EA413F /* ListSongTVC.xib */; };
 		4D9872202E0AA79C00EA413F /* ListSongTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D98721D2E0AA79C00EA413F /* ListSongTVC.swift */; };
+		4DC81AD72E24CD13006097BC /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC81AD62E24CD13006097BC /* AudioManager.swift */; };
+		4DC81AD92E24CD27006097BC /* NowPlayingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC81AD82E24CD27006097BC /* NowPlayingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +56,8 @@
 		4D9872182E0AA72300EA413F /* ListSongVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSongVC.swift; sourceTree = "<group>"; };
 		4D98721D2E0AA79C00EA413F /* ListSongTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSongTVC.swift; sourceTree = "<group>"; };
 		4D98721E2E0AA79C00EA413F /* ListSongTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListSongTVC.xib; sourceTree = "<group>"; };
+		4DC81AD62E24CD13006097BC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		4DC81AD82E24CD27006097BC /* NowPlayingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingManager.swift; sourceTree = "<group>"; };
 		AFD6C3552D4A481600A74D70 /* AVFoundation_task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVFoundation_task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AEA1205D825881072B9606 /* Pods-AVFoundation_task.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVFoundation_task.release.xcconfig"; path = "Target Support Files/Pods-AVFoundation_task/Pods-AVFoundation_task.release.xcconfig"; sourceTree = "<group>"; };
 		B9C1B0514E45E54476442981 /* Pods-AVFoundation_task.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVFoundation_task.debug.xcconfig"; path = "Target Support Files/Pods-AVFoundation_task/Pods-AVFoundation_task.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 		4D9872152E0AA6D200EA413F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4DC81AD82E24CD27006097BC /* NowPlayingManager.swift */,
+				4DC81AD62E24CD13006097BC /* AudioManager.swift */,
 				4D98720A2E0AA6D000EA413F /* SongVC.swift */,
 				4D9872182E0AA72300EA413F /* ListSongVC.swift */,
 			);
@@ -172,7 +178,6 @@
 				AFD6C3522D4A481600A74D70 /* Frameworks */,
 				AFD6C3532D4A481600A74D70 /* Resources */,
 				4D05F5882E0AE3FB00783616 /* Embed Frameworks */,
-				179C3D1F2E0DB81795CB70BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,27 +241,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		179C3D1F2E0DB81795CB70BF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AVFoundation_task/Pods-AVFoundation_task-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AVFoundation_task/Pods-AVFoundation_task-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVFoundation_task/Pods-AVFoundation_task-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AAD91FE4FFECE193B6004836 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,9 +271,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D9872202E0AA79C00EA413F /* ListSongTVC.swift in Sources */,
+				4DC81AD72E24CD13006097BC /* AudioManager.swift in Sources */,
 				4D9872122E0AA6D000EA413F /* AppDelegate.swift in Sources */,
 				4D9872132E0AA6D000EA413F /* SceneDelegate.swift in Sources */,
 				4D8455612E0BDB3B0068EBC3 /* SongStruct.swift in Sources */,
+				4DC81AD92E24CD27006097BC /* NowPlayingManager.swift in Sources */,
 				4D9872142E0AA6D000EA413F /* SongVC.swift in Sources */,
 				4D9872192E0AA72300EA413F /* ListSongVC.swift in Sources */,
 			);

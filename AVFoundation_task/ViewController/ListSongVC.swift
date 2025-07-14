@@ -62,7 +62,7 @@ extension ListSongVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let  SongVC = self.storyboard?.instantiateViewController(withIdentifier: "SongVC") as? SongVC else{return}
-        songVC?.pauseIfPlaying()
+//        songVC?.pauseIfPlaying()
         self.songVC = SongVC
         let songs = song[indexPath.row]
         SongVC.songname = songs.imagename

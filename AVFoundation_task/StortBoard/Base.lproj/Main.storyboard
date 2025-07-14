@@ -263,19 +263,9 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-f7-nPg">
                                 <rect key="frame" x="20" y="176" width="353" height="380"/>
-                                <subviews>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S0K-aZ-Q5c" customClass="YoutubePlayerView" customModule="YoutubePlayerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="380"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="380" id="9xk-xI-fVP"/>
-                                    <constraint firstAttribute="bottom" secondItem="S0K-aZ-Q5c" secondAttribute="bottom" id="Vjp-w8-s4g"/>
-                                    <constraint firstItem="S0K-aZ-Q5c" firstAttribute="top" secondItem="xoK-f7-nPg" secondAttribute="top" id="ZNW-Um-7Rm"/>
-                                    <constraint firstItem="S0K-aZ-Q5c" firstAttribute="leading" secondItem="xoK-f7-nPg" secondAttribute="leading" id="fd3-4i-JdH"/>
-                                    <constraint firstAttribute="trailing" secondItem="S0K-aZ-Q5c" secondAttribute="trailing" id="ySd-kF-Nbg"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -322,7 +312,6 @@
                         <outlet property="my_Slider" destination="rt4-Fx-foH" id="O9Y-Y8-Vd5"/>
                         <outlet property="songandvideosemented" destination="1Cv-Cc-BxI" id="zT2-0H-T8N"/>
                         <outlet property="videoview" destination="xoK-f7-nPg" id="se0-C3-9T4"/>
-                        <outlet property="youtubevideo" destination="S0K-aZ-Q5c" id="Fov-Uu-MVN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
